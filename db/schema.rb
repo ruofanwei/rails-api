@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 2022_02_03_141930) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
-  create_table "stores", force: :cascade do |t|
-    t.string "user"
-    t.string "references"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"

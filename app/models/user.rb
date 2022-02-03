@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     # model association
-    has_many :stores
 
+    validates :username, presence: true
+    validates :email,email: true
 end

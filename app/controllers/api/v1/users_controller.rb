@@ -1,9 +1,11 @@
 module Api
   module V1
       class UsersController < ApplicationController
-
+            MAX_PAGINATION_LIMIT = 100
             def index
-              render json: User.all
+              users = User.limit(limit).offset(params[:offset])
+
+              render json: UsersRepresenter.new(users).as_json
             end
 
             def create
@@ -23,6 +25,10 @@ module Api
             end
 
             private
+
+            def limit
+              [params.fetch(:limit, MAX_PAGINATION_LIMIT).to_i, MAX_PAGINATION_LIMIT].min
+            end
 
             def user_params
               params.require(:user).permit(:username, :email)

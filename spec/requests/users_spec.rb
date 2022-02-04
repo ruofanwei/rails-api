@@ -11,7 +11,7 @@ describe 'Users api', type: :request do
 
             get '/api/v1/users'
             expect(response).to have_http_status(:success)
-            expect(JSON.parse(response.body).size).to eq(2)
+            expect(response_body.size).to eq(2)
         end
     end
 
@@ -23,6 +23,13 @@ describe 'Users api', type: :request do
 
 
             expect(response).to have_http_status(:created)
+            expect(response_body).to eq(
+                {
+                    "id" => 1,
+                    "username" => "tanten",
+                    "email" => "tanten@gmail.com"
+                }
+            )
         end
     end
 

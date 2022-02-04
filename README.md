@@ -9,7 +9,7 @@ rails new rails-api --api -T
 ```
 
 ### Features
-- ｀GET /api/v1/users｀ returns list of users
+- `GET /api/v1/users` returns list of users
 - `POST /api/v1/users` accepts a new user to be added
 - `DELETE /api/v1/users/{id}` delete details of specific user
 - implement test each api

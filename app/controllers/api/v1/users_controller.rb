@@ -1,3 +1,5 @@
+
+
 module Api
   module V1
       class UsersController < ApplicationController
@@ -9,7 +11,10 @@ module Api
             end
 
             def create
-              user = User.new(user_params)
+              user = User.create!(user_params)
+
+              # UpdateSkuJob.perform_later(params[:username])
+
               if user.save
                 render json: UserRepresenter.new(user).as_json, status: :created
               else
